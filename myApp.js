@@ -1,8 +1,10 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-app.get("/", (req,res)=> {
-	res.send('Hello Express')
+app.use(express.static(__dirname + '/public'))
+
+app.get('/, (req,res) => {
+	res.sendFile( __dirname + '/views/index.html')
 });
 
 
