@@ -16,7 +16,7 @@ app.get('/', (req,res) => {
 app.get('/json', (req,res) => {
 	res.json({"message": "Hello json"});
 });
-// response depending on  .enc variables
+// response depending on  .env variables
 // app.get('/json', (req,res) => {
 // 	if(process.env.MESSAGE_STYLE==="uppercase"){
 // 		res.json({"message": "HELLO JSON"});
@@ -25,12 +25,13 @@ app.get('/json', (req,res) => {
 // 	}
 // });
 
-
-
-
-
-
-
+// /now route middleware func responding with current time
+app.get('/now', (req,res,next) => {
+	req.time = new Date().toString();
+	next();
+}, (req,res) => {
+	res.json({"time":req.time});
+});
 
 
 
