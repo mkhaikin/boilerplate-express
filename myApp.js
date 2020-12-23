@@ -1,5 +1,9 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+
+// Use body-parser to Parse POST Requests
+app.use(bodyParser.urlencoded({extended: false}))
 // Serve static assets
 app.use(express.static(__dirname + '/public'));
 
@@ -48,6 +52,8 @@ app.get('/name', (req,res,next) => {
 		"name": req.query.first+" "+req.query.last
 	});
 });
+
+// Use body-parser to Parse POST Requests
 
 
 
