@@ -42,6 +42,13 @@ app.get('/:word/echo', (req,res,next) => {
 	});
 });
 
+// Get Query Parameter Input from the Client
+app.get('/name', (req,res,next) => {
+	res.json({
+		"name": req.query.first+" "+req.query.last
+	});
+});
+
 
 
 
