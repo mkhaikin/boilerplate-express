@@ -12,9 +12,11 @@ app.get('/', (req,res) => {
 	res.sendFile( __dirname + '/views/index.html')
 });
 
+//path for json output
 app.get('/json', (req,res) => {
 	res.json({"message": "Hello json"});
 });
+// response depending on  .enc variables
 // app.get('/json', (req,res) => {
 // 	if(process.env.MESSAGE_STYLE==="uppercase"){
 // 		res.json({"message": "HELLO JSON"});
