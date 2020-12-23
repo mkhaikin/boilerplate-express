@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
+// Serve static assets
+app.use(express.static(__dirname + '/public'));
 
-app.use(express.static(__dirname + '/public'))
 // Logger
 app.use('*', (req,res,next) => {
 	console.log(req.method +" "+req.path+" - "+req.ip);
 	next();
-})
+});
+
 // Serve a simple html file
 app.get('/', (req,res) => {
 	res.sendFile( __dirname + '/views/index.html')
@@ -25,7 +27,7 @@ app.get('/json', (req,res) => {
 // 	}
 // });
 
-// /now route middleware func responding with current time
+// "/now" route middleware func responding with current time
 app.get('/now', (req,res,next) => {
 	req.time = new Date().toString();
 	next();
@@ -33,7 +35,12 @@ app.get('/now', (req,res,next) => {
 	res.json({"time":req.time});
 });
 
-
+// Get Route Parameter Input from the Client
+app.get('/:word/echo', (req,res,next) => {
+	res.json({
+		"echo":req.params.word
+	});
+});
 
 
 
